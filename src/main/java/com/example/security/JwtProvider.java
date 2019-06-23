@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 @Component
 public class JwtProvider {
     private final String ROLES_KEY = "roles";
-    private JwtParser parser;
     private String secretKey;
     private long validityInMilliseconds;
 
