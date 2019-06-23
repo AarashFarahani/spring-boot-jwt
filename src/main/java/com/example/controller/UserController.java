@@ -50,17 +50,4 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAll();
     }
-
-    /**
-     * Exception handler if NoSuchElementException is thrown in this Controller
-     *
-     * @param ex exception
-     * @return Error message String.
-     */
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(RuntimeException.class)
-    public String return400(RuntimeException ex) {
-        LOGGER.error("Unable to complete transaction", ex);
-        return ex.getMessage();
-    }
 }

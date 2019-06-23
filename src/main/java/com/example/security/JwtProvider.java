@@ -34,12 +34,9 @@ public class JwtProvider {
         this.validityInMilliseconds = validityInMilliseconds;
     }
 
-    public String createToken(String username, List<Role> set) {
+    public String createToken(String username, Role role) {
         Claims claims = Jwts.claims().setSubject(username);
-        claims.put("auth", set.stream()
-                .map(s -> new SimpleGrantedAuthority(s.getAuthority()))
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList()));
+        claims.put("auth", new SimpleGrantedAuthority(role.getAuthority()));
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);

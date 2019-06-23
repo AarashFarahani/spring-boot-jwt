@@ -17,7 +17,7 @@ public class User {
     public User(String username, String password, Role role, String firstName, String lastName) {
         this.username = username;
         this.password = password;
-        this.roles = Arrays.asList(role);
+        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -35,8 +35,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    List<Role> roles;
+    @Column(name = "role")
+    private Role role;
 
     /**
      * Default Constructor.
@@ -84,11 +84,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
